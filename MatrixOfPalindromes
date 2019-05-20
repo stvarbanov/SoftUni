@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+public class MatrixOfPalindromes {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        String[] input = scanner.nextLine().split("\\s+");
+
+        int rows = Integer.parseInt(input[0]);
+        int cols = Integer.parseInt(input[1]);
+        String[][] matrix = null;
+
+        if (rows + cols <= 27) {
+            matrix = new String[rows][cols];
+        } else {
+            matrix = new String[0][0];
+        }
+        char rowLetter = 'a';
+        char midLetter = 'a';
+        for (int row = 0; row < matrix.length; row++) {
+            midLetter = rowLetter;
+            for (int col = 0; col < matrix[row].length; col++) {
+                matrix[row][col] = "" + rowLetter + midLetter + rowLetter;
+                midLetter++;
+            }
+
+            rowLetter++;
+
+            System.out.println();
+        }
+
+        printMatrix(matrix);
+    }
+
+    private static void printMatrix(String[][] matrix) {
+        for (int row = 0; row < matrix.length; row++) {
+
+            for (int col = 0; col < matrix[row].length; col++) {
+                System.out.print(matrix[row][col] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+
+}
